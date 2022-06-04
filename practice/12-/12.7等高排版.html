@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+
+body {/* 网页基本属性 */
+    margin:0;                               		/* 清除页边距 */
+    padding:0;                               		/* 清除页边距 */
+    text-align:center;                            	/* 网页居中 */
+    text-shadow: 1px 1px 1px #A4A4A4;
+}
+p {/* 段落样式 */
+    margin:10px;                              	/* 文本段落外边距 */
+}
+a {/* 超链接样式 */
+    display:block;                             	/* 超链接块状显示 */
+    color: #006;                               	/* 超链接字体颜色 */
+    padding:10px                           	  	/* 超链接内边距 */
+}
+#container {/* 网页包含框样式 */
+    margin:0 auto;                          	  	/* 网页居中显示 */
+    width:778px;                            	 	/* 网页宽度 */
+}
+div#header h1 {/* 页眉区域样式 */
+    height:80px;                               	/* 页眉区域高度 */
+    line-height:80px;                           	/* 垂直居中 */
+    margin:0;                                 	/* 外边距 */
+    padding-left:10px;                          	/* 左侧内边距 */
+    background: #EEE;                         	/* 页眉区域背景色 */
+    color: #79B30B                            	/* 页眉区域字体颜色 */
+}
+div#footer {/* 页脚区域样式 */
+    background: #333;                          	/* 页脚区域背景色 */
+    color: #FFF;                               	/* 页脚字体颜色 */
+    height:30px;                               	/* 页脚区域高度 */
+    clear: both;                             	  	/* 清除两侧浮动 */
+    line-height:30px;
+}
+#main {/* 主体包含框样式 */
+    overflow: hidden;                         	/* 隐藏多余的空间 */
+}
+#wrap {/* 左侧包含框样式 */
+    float: left;                                 	/* 向左浮动 */
+    width: 628px;                              	/* 左侧包含框宽度 */
+}
+#left {/* 左栏样式 */
+    float: left;                              	 	/* 向左浮动 */
+    margin: 0;                            	   	/* 外边距为0 */
+    width: 140px;                              	/* 左栏宽度 */
+    background: #B9CAFF;                     	/* 左栏背景色 */
+}
+#mid {/* 中栏样式 */
+    float: right;                              	 	/* 向右浮动 */
+    margin-left: 10px;                          	/* 左侧外边距 */
+    width: 478px;                             	/* 中栏宽度 */
+}
+#wrap, #left, #mid, #right {/* 核心样式，栏目的无穷大内边距和无穷大负外边距 */
+    padding-bottom: 9999px;                   	/* 底部无穷大正内边距 */
+    margin-bottom: -9999px;                   	/* 底部无穷大负外边距 */
+}
+#right {/* 右栏样式 */
+    float: right;                              	 	/* 向右浮动 */
+    margin-left: 10px;                          	/* 栏目左侧外边距 */
+    width: 140px;                             	/* 右栏宽度 */
+    background: #FF8539;                      	/* 右栏背景色 */
+}
+
+
+html>/**/body  div#footer {/* 支持非IE怪异模式*/
+    margin-top:-10px;                          	/* 底部负外边距 */
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+    <div id="header">
+        <h1>页眉区域</h1>
+    </div>
+    <div id="main">
+        <div id="wrap">
+            <div id="mid">
+                <p><strong>1.主栏</strong></p>
+            </div>
+            <div id="left">
+                <p><strong>2.左栏</strong><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+            </div>
+        </div>
+        <div id="right">
+            <p><strong>3.右栏</strong></p>
+        </div>
+    </div>
+    <div id="footer">
+        <p>页脚区域</p>
+    </div>
+</div>
+</body>
+</html>

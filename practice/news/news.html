@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+     
+      $(function () {
+        var s = "javascript";
+        var b = s.replace(/pt/, "$& != $`");
+        console.log(b);
+
+        var $div_text = $("#text-node");
+        // var textNode = document.createTextNode("Hello");
+        // var textNode1 = document.createTextNode("Hello2");
+        // $div_text.append(textNode);
+        // $div_text.append(textNode1);
+        // console.log($div_text.length);
+        // console.log($div_text.hasClass("test2"));
+        var div_text = $div_text[0];
+        
+        var child_node = div_text.children[0];
+        var nodelist = div_text.childNodes;
+       
+       
+        div_text.addEventListener("click", function (e) {
+          this.style.background = "red";
+          
+        }, false);
+        child_node.addEventListener("click", function (e) {
+          this.style.background = "green";
+          e.stopPropagation();
+        }, false);
+
+
+      })
+    </script>
+    <style>
+      div {
+        width: 200px;
+        height: 500px;
+      }
+      h1 {
+        height: 20px;
+        padding: 5px 20px 5px 0;
+        line-height: 26px;
+        overflow: hidden;
+        font-size: 20px;
+
+      }
+      .bg-div {
+        width: 600px;
+        height: 600px;
+        padding: 10px;
+        border: 2px solid black;
+        background: url(./1.jpg)  no-repeat;
+        /* background-origin: content-box; */
+        background-clip: border-box;
+      }
+      .pt1 {
+        width: 200px;
+        height: 200px;
+        background-size: 50px 50px;
+        background-color: #0ea;
+        margin: 10px;
+        /* background-image: linear-gradient(rgba(255,255,255,.5) 50%,transparent 50%,transparent); */
+        /* background-image: linear-gradient(rgba(255,255,255,.2) 50%,transparent 50%); */
+        background-image:  linear-gradient(to left,rgba(255,255,255,.2) 50%,transparent 50%,transparent),
+        linear-gradient(to top,rgba(255,255,255,.2) 50%,transparent 50%,transparent);
+      
+        box-shadow: 0 1px 8px #666;
+      }
+      .pt2 {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background-image: radial-gradient(8em circle at top, hsla(200,89%,100%,1),hsla(30,60%,60%,.9));
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid black;
+        width: 200px;
+        height: 200px;
+      }
+      tr td {
+        border: 1px solid black;
+      }
+      tr > td + td + td + td + td + td + td {
+        background: #0ea;
+      }
+      #text-node {
+        width: 200px;
+        height: 200px;
+        background: yellow;
+      }
+      #child-node {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background: blue;
+      }
+      input {
+        /* border-style: inset; */
+        border-style: outset;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>北京将公务员酒后驾车列入年度考核公务员酒后驾车列入年度考核公务员酒后驾车列入年度考核公务员酒后驾车列入年度考核公务员酒后驾车列入年度考核</h1>
+      <div class="bg-div"></div>
+      <div class="pt1"></div>
+      <div class="pt2"></div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <td colspan="7">123</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="text-node" class="test1 test2">
+          <div id="child-node">adsf</div>
+        </div>
+      </div>
+      <input type="text" />
+    </div>
+  </body>
+</html>

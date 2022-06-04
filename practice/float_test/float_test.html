@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      #box1 {
+        background: green;
+        height: 400px;
+        width: 400px;
+      }
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      #sub_div1 {
+        background: red;
+        float: left;
+      }
+      #sub_div2 {
+        height: 200px;
+        width: 200px;
+        background: white;
+        clear: both;
+      }
+      #sub_div3 {
+        background: blue;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+      }
+      .clear {
+        clear: both;
+      }
+      #box2 {
+        width: 400px;
+        height: 400px;
+        background: gray;
+        color: black;
+        vertical-align: bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <div id="sub_div3"></div>
+      <div id="sub_div1">浮动</div>
+      <div id="sub_div2">流动</div>
+      <!-- <div class="clear"></div> -->
+    </div>
+    <div id="box2">
+      hello,world;
+      <span>hello, world</span>
+    </div>
+  </body>
+</html>

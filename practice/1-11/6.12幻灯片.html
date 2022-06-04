@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        //初始化
+        var index = 1;
+        var len = $("#ul-text li").length;
+        var intervalHandler;
+        setTime();
+
+        //小图片点击
+        $("#ul-small-pic li").click(function (e) {
+          clearInterval(intervalHandler);
+          index = $(this).index() + 1;
+          changeShow(index);
+          setTime();
+           
+        });
+        //右箭头事件
+        $("#gt").click(function () {
+          clearInterval(intervalHandler);
+          // var index = $("#ul-text li.current").index() + 1;
+          // var len = $("#ul-text li").length;
+          var $li_list = $("#ul-text li");
+          var $item = $li_list.filter(".current");
+          index = $item.index() + 1;
+         
+          //$("#ul-text li").find(".current") 错误 find() 查找该元素节点的后代
+          // 同理has
+
+          var len = $li_list.length;
+          if (index < len) {
+            changeShow(index + 1);
+          } 
+          setTime();
+        })
+        // 左箭头事件
+        $("#lt").click(function () {
+          clearInterval(intervalHandler);
+          var $li_list = $("#ul-text li");
+          var $item = $li_list.filter(".current");
+          index = $item.index() + 1;
+          var len = $li_list.length;
+        
+          if (index > 0) {
+            changeShow(index - 1);
+          } 
+          setTime();
+        })
+      
+        // js 和 jQuery 联合问题
+        // $("#ul-small-pic :nth-child(2)").addClass("current");
+        // var ul = document.getElementById("ul-small-pic");
+        // ul.addEventListener("mouseover", function (ev) {
+        //   var tar = ev.target;
+        //   if (tar.nodeName == "LI") {
+        //     // tar.style.borderColor = "green";
+        //     var $tar = $(tar);
+        //     $tar.addClass("current");
+        //     // $tar.css("borderColor", "green");
+            
+        //   }
+        // }, false);
+
+        function changeShow(index) {
+          $("#ul-small-pic li:nth-child("+index+")").addClass("current")
+            .siblings().removeClass("current")
+          
+          $("#ul-text li:nth-child("+index+")").addClass("current")
+            .siblings().removeClass("current");
+
+          $("#ul-big-pic li:nth-child(" +index+")").addClass("current")
+            .siblings().removeClass("current")
+          var offset = 120;
+          var offsetTotal;
+          if (index >= 2 && index < 5) {
+            offsetTotal = -offset * (index - 2);
+          } else if (index == 1) {
+            offsetTotal = 0;
+          }
+          $("#ul-small-pic").animate({left: offsetTotal + "px"});
+          
+        }
+        function setTime() {
+          intervalHandler = setInterval(function () {
+            
+            index = index + 1;
+            if (index > 6) index = 1;
+            changeShow(index);
+
+          }, 3000);
+        }
+      })
+    </script>
+    <style>
+      
+      * {
+        padding: 0;
+        margin: 0; 
+      }
+      #main {
+        position: relative;
+        text-align: center;
+        width: 800px;
+        
+        margin: 0 auto;
+      }
+      #ul-big-pic {
+        position: relative;
+        
+      }
+      #ul-big-pic li {
+        list-style: none;
+        position: absolute;
+        width: 600px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      #ul-big-pic li.current {
+        opacity: 1;
+      }
+      #ul-big-pic li img {
+        width: 100%;
+        
+      }
+      #slider {
+        width: 100%;
+        /* background: green; */
+        height: 120px;
+        position: relative;
+        top: 700px;
+        
+         
+      }
+      #ul-text {
+        position: relative;
+        float: left;
+        padding: 0;
+        margin: 0;
+        margin-right: 10px;
+        width: 100px;
+        height: 120px;
+      }
+      #ul-text li{
+        position: absolute;
+        list-style: none;
+        opacity: 0;
+        width: 100px;
+        height: 120px;       
+        text-align: left;
+        background: gray;
+      }
+      #ul-text li.current {
+        opacity: 1;
+      }
+      #div-ul-small-pic {
+        float: left;
+        width: 484px;   /*4px border width*/
+        height: 120px;
+        overflow: hidden;
+        background: gray;
+        padding: 0;
+        left: 100px;      
+        margin-right: 10px;
+      }
+      #ul-small-pic {
+        width: 724px;   /*4px border width*/
+        position: relative;
+      }
+      #ul-small-pic li {
+        list-style: none;
+        float: left;
+        margin: 7px 10px;
+        background: gray;
+        width: 100px;
+      }
+      #ul-small-pic li img {
+        width: 100%;
+        display: block;
+      }
+      #ul-small-pic li.current {
+        border: 2px solid orange;
+      }
+      #gt, #lt {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2em;
+        position: relative;
+        float: left;
+        background: gray;
+        border-radius: 50%;
+        top: 35px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      #gt span, #lt span {
+        line-height: 50px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <ul id="ul-big-pic">
+        <li class="current"><a href="javascript:;" ><img src="1.jpg" /></a></li>
+        <li><a href="javascript:;" ><img src="2.jpg" /></a></li>
+        <li><a href="javascript:;" ><img src="1.jpg" /></a></li>
+        <li><a href="javascript:;" ><img src="2.jpg" /></a></li>
+        <li><a href="javascript:;" ><img src="1.jpg" /></a></li>
+        <li><a href="javascript:;" ><img src="2.jpg" /></a></li>
+      </ul>
+      <div id="slider">
+        
+        <ul id="ul-text">
+          <li class="current"><span>111111</span></li>
+          <li><span>222222</span></li>
+          <li><span>111111</span></li>
+          <li><span>222222</span></li>
+          <li><span>111111</span></li>
+          <li><span>222222</span></li>
+        </ul>
+        <div id="lt"><span>&lt;</span></div>
+        <div id="div-ul-small-pic">
+          <ul id="ul-small-pic">
+            <li class="current"><a href="javascript:;" ><img src="1.jpg" /></a></li>
+            <li id="4"><a href="javascript:;" ><img src="2.jpg" /></a></li>
+            <li><a href="javascript:;" ><img src="1.jpg" /></a></li>
+            <li><a href="javascript:;" ><img src="2.jpg" /></a></li>
+            <li><a href="javascript:;" ><img src="1.jpg" /></a></li>
+            <li><a href="javascript:;" ><img src="2.jpg" /></a></li>
+          </ul>
+        </div>
+       
+        <div id="gt"><span>&gt;</span></div>
+         
+      </div>
+     
+    </div>
+  </body>
+</html>

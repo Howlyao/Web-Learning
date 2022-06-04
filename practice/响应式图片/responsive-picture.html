@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <!-- 问题：调节窗口大小没有触发响应式变更图片
+
+          原因：在浏览器有缓存中有更高分辨率的图片时不会加载更低分辨率的图片 -->
+    <img srcset="k.jpg 400w,
+                 1.jpg 507w,
+                 2.jpg 509w"
+
+          sizes="(max-width: 200px) 200px,
+                 (max-width: 507px) 507px,
+                 700px"
+                    
+           />
+    <!-- <picture>
+      <source media="(max-width: 200px)" srcset="k.jpg" />
+      <source media="(max-width: 500px)" srcset="1.jpg" />
+      <source media="(min-width: 507px)" srcset="2.jpg" />
+      <img src="k.jpg" />
+    </picture> -->
+  </body>
+</html>

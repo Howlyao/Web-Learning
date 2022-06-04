@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        var div_list =  $("ul li div");
+        var offset = 30;
+        var flag = true;
+        setInterval(function() {
+          if (flag)
+            offset = -30;
+          else 
+            offset = 0;
+          flag = !flag;
+          // var str = div_list.get(0).style.top.slice(0, -2);
+          // var offsetTop = parseInt(str);
+          
+          // console.log(offsetTop);
+          div_list.animate({top: offset + "px"}, 500);
+        },3000);
+       
+      })
+    </script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #blinds {
+        width: 200px;
+        height: auto;
+        border: 1px solid;
+        margin: 0 auto;
+        margin-top: 100px;
+      }
+      ul li{
+        list-style: none;
+        height: 30px;
+        width: 200px;
+        border-bottom: 1px dashed black;
+        overflow: hidden;
+
+      }    
+      ul li div {
+        position: relative;
+        top: 0px;
+      }
+      ul li div a {
+        line-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="blinds">
+      <ul>
+        <li>
+          <div>
+            <a href="#">A</a>
+            <br>
+            <a href="#">B</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <a href="#">A</a>
+            <br>
+            <a href="#">B</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <a href="#">A</a>
+            <br>
+            <a href="#">B</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <a href="#">A</a>
+            <br>
+            <a href="#">B</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <a href="#">A</a>
+            <br>
+            <a href="#">B</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

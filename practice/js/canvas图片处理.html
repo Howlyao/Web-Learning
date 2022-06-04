@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    
+    <style>
+    </style>
+  <body>
+
+  </body>
+  <script>
+    // Converts image to canvas; returns new canvas element
+    function convertImageToCanvas(image) {
+      var canvas = document.createElement("canvas");
+      canvas.width = image.width;
+      canvas.height = image.height;
+      canvas.getContext("2d").drawImage(image, 0, 0);
+
+      return canvas;
+    }
+    // Converts canvas to an image
+    function convertCanvasToImage(canvas) {
+      var image = new Image();
+      image.src = canvas.toDataURL("image/png");
+      return image;
+    }
+  </script>
+</html>

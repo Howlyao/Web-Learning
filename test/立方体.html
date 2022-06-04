@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+      $(function() {
+       
+      })
+      
+    </script>
+    <style>
+        * {
+          padding: 0;
+          margin: 0;
+      }
+      .stage {
+        perspective: 1200px;
+        position: relative;
+        
+        margin-top: 300px;
+        margin-left: 300px;
+      }
+      .container {
+        transform-style: preserve-3d;
+        transform: all 2s ease;
+        /* width: auto; */
+        width: 200px;
+      }
+      .container:hover {
+        animation: spin 5s linear infinite;
+      }      
+      .blo{
+          width: 200px;
+          height: 200px;
+          background-color: transparent;
+          /* overflow: hidden; */
+          box-shadow: inset 0 0 15px rgb(255, 33, 33, 0.5);
+          position: absolute;
+          
+      }
+      .front {
+        transform: rotateY(0deg) translateZ(100px);
+      }
+      .back {
+        transform: rotateY(180deg) translateZ(-100px);
+      }
+      .left {
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+      .right {
+        transform: rotateY(90deg) translateZ(100px);
+      }
+      .top {
+        transform: rotateX(90deg) translateZ(100px);
+      }
+      .bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+      }
+      @keyframes spin {
+        0% {transform: rotateY(0deg) rotateX(0deg)}
+        
+        100% {transform: rotateY(360deg) rotateX(360deg)}
+      }
+      
+      
+</style>
+     
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+        <div class="container">
+            <div class="blo front"></div>
+            <div class="blo back"></div>
+            <div class="blo top"></div>
+            <div class="blo bottom"></div>
+            <div class="blo left"></div>
+            <div class="blo right"></div>
+        </div>
+    </div>
+  
+  
+      
+     
+  </div>
+      
+        
+  </body>
+</html>

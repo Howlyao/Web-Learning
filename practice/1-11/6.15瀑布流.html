@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        var window_height = $(window).height();
+        // console.log($(window).height());
+        var ul = $("ul");
+        $(window).scroll( function (e) {
+          var scrollTopOffset = $(window).scrollTop();
+          var lastChild = ul.children().last();     //ul last item
+          var item_height = lastChild.height();     //last item height
+          var item_top = lastChild.offset().top;    //last item top :the distance from item-borderTop to window-BorderTop 
+
+          if ((item_top + item_height) < (scrollTopOffset + window_height)) {
+            //load data
+            // console.log(item_height + " " + item_top);
+          }
+          
+         
+        })
+      })
+    </script>
+    <style>
+      
+      .pic {
+        float: left;
+      }
+     
+      li {
+        list-style: none;
+        float:left;
+        border: 1px solid black;
+        padding: 2px;
+        margin: 2px;
+        width: 30%;
+       
+      }
+      img {
+        width:100%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <ul>
+        <li><a href="#"><img src="1.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="2.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="3.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="1.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="2.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="3.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="1.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="2.jpg" /></a><p>标题</p></li>
+        <li><a href="#"><img src="3.jpg" /></a><p>标题</p></li>
+      </ul>
+    </div>
+  </body>
+</html>

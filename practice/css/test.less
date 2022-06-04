@@ -1,0 +1,11 @@
+
+@mode: 'small';
+#namespace when (@mode = 'huge') {
+  .mixin() { background: red }
+  .mixin2(1) {background: yellow}
+  .mixin2() when (default()) {background: gray}
+}
+
+#test {
+  #namespace .mixin2();
+}

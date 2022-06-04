@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .dialog-container {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+      }
+
+      .dialog-container[aria-hidden="true"] {
+        display: none;
+      }
+
+      .dialog-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(43, 46, 56, 0.9);
+        animation: fade-in 200ms both;
+      }
+
+      .dialog-content {
+        background-color: rgb(255, 255, 255);
+        margin: auto;
+        z-index: 2;
+        position: relative;
+        animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
+        padding: 1em;
+        max-width: 90%;
+        width: 600px;
+        border-radius: 2px;
+      }
+
+      @media screen and (min-width: 700px) {
+        .dialog-content {
+          padding: 2em;
+        }
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          transform: translateY(10%);
+        }
+      }
+    </style>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/a11y-dialog@7/dist/a11y-dialog.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- 1. The dialog container -->
+    <div
+      class="dialog-container"
+      id="your-dialog-id"
+      aria-labelledby="your-dialog-title-id"
+      aria-hidden="true"
+    >
+      <!-- 2. The dialog overlay -->
+      <div class="dialog-overlay" data-a11y-dialog-hide></div>
+      <!-- 3. The actual dialog -->
+      <div class="dialog-content" role="document">
+        <!-- 4. The close button -->
+        <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
+          &times;
+        </button>
+        <!-- 5. The dialog title -->
+        <h1 id="your-dialog-title-id">Your dialog title</h1>
+        <!-- 6. Dialog content -->
+      </div>
+    </div>
+    <button id="showBtn">Show Dialog</button>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        // Get the dialog container HTML element (with the accessor method you want)
+        const element = document.getElementById("your-dialog-id");
+
+        // Instantiate a new A11yDialog module
+        const dialog = new A11yDialog(element);
+
+        let showBtn = document.querySelector("#showBtn");
+        showBtn.addEventListener("click", () => {
+          dialog.show();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        $(window).click(function (e) {
+          // $(this).addClass("current");
+          if(e.target.tagName.toLowerCase() == "div") {
+            $("div").removeClass("current");
+            $(e.target).addClass("current");
+            
+          }
+         
+        }) ;
+        // for(var i=1;i<=3;i++){
+        //   setTimeout(function(){
+        //     console.log(i); 
+        //   },4000); 
+        // }
+        var reg = /^(#)?(\.)?(\w+)$/img;
+        // reg.exec("#div");
+        // console.log(reg.exec(".div"));
+
+        var div1 = document.getElementById("div1");
+        // console.log(div1.getBoundingClientRect());
+        
+        //匹配
+        var s = 'aaabbbcccaaabbbaaabbbbbbbbbb'; 
+        var a = s.split(''); 
+        a.sort(); 
+        s = a.join(''); 
+        var pattern = /(\w)\1*/g; 
+        var ans = s.match(pattern); 
+        ans.sort(function(a, b) { 
+          return a.length < b.length; 
+        });; 
+        // console.log(ans[0][0] + ': ' + ans[0].length);
+                
+        //url参数设置
+        function parseQueryString(url) {
+          var params = url.split("?")[1];
+          var params_list = params.split("&");
+          var len = params_list.length;
+          var pairs = {};//
+          for (var i = 0; i < len; i++) {
+            var param = params_list[i].split("=");
+            pairs[param[0]] = param[1];
+          }
+          // console.log(pairs);
+        }
+
+        var url = "http://witmax.cn/index.php?key0=0&key1=1&key2=2"
+        parseQueryString(url);
+
+
+        //闭包 数组值变数组函数
+        var a = [1, 2, 3, 4, 5, 6]; 
+        var len = a.length; 
+        for(var i = 0; i < len; i++) { 
+          var num = a[i]; 
+          (function(num) { 
+            var f = function() { 
+              console.log(num); 
+            }; 
+            a[i] = f; 
+          })(num); 
+        }
+        //get host
+        var regex = /^\w+\:\/\/([^\/]*).*/;
+        // var s = "<html><head></head></html>";
+        // var r = /(<.*>)(<.*>)/;
+        // var a = s.match(r);
+
+        var s = "<h1>title<h1><p>text<p>";
+        var r = /(<\w+>).*\1/g;
+        var a = s.match(r);
+        // console.log(a);
+        
+
+        //颜色转换
+        function toRGB(str) {
+          var reg1 = /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/
+          var match1 = str.match(reg1);
+          if (match1 !== null) {
+            var colorDigit = match1[1];
+            if (colorDigit.length == 3) {
+              return str;
+            } else {
+              var red = "0x" + colorDigit.substr(0, 2);
+              var green = "0x" + colorDigit.substr(2, 2);
+              var blue = "0x" + colorDigit.substr(4, 2);
+              return "rgb(" + parseInt(red) + ", " + parseInt(green) + ", " + parseInt(blue) + ")";
+            }
+          } else {
+            return "invalid";
+          }
+        }
+
+        console.log(toRGB("#0000FF"));
+        console.log(toRGB("invalid"));
+        console.log(toRGB("#F00"));
+      })
+    </script>
+    <style>
+      div {
+        transition: all 1s ease;
+        transform-origin: 0 0;
+      }
+      #div1 {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: red;
+        /* transform-origin: top left; */
+        
+      }
+      #div2 {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background: green;
+       
+       
+      }
+      .current {
+        transform: scale(1.2, 1.2);
+        z-index: 100;
+      }
+     
+    </style>
+  </head>
+  <body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <input type="button" value="new" onclick="location.assign('test.html')" />
+    
+  </body>
+</html>
+

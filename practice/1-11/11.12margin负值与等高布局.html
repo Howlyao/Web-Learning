@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script></script>
+    <style>
+      .container {
+        margin: auto;
+        max-width: 600px;
+        overflow: hidden;
+      }
+      .column-left,
+      .column-right {
+        width: 50%;
+        float: left;
+        margin-bottom: -9999px;
+        padding-bottom: 9999px;
+        color: #fff;
+      }
+      .column-left {
+        background-color: #34538b;
+      }
+      .column-right {
+        background-color: #cd0000;
+      }
+      .half {
+        width: 50%;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="colLeft" class="column-left">
+        <h4>正方观点</h4>
+        <p>观点1</p>
+      </div>
+      <div id="colRight" class="column-right">
+        <h4>反方观点</h4>
+        <h4>反方观点</h4>
+        <h4>反方观点</h4>
+        <h4>反方观点</h4>
+        <h4>反方观点</h4>
+      </div>
+    </div>
+    <div class="container">
+      <p class="half">
+        <input type="button" id="leftMore" value="更多正方观点" />
+      </p>
+      <p class="half">
+        <input type="button" id="rightMore" value="更多反方观点" />
+      </p>
+    </div>
+  </body>
+</html>

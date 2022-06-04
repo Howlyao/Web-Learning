@@ -1,0 +1,109 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  width: 1600px;
+}
+#header {
+  margin: 5px;
+  height: 50px;
+}
+#nav {
+  background: #7a87c2;
+  height: 64px;
+  margin: 5px;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+#nav_ul a {
+  color: white;
+  line-height: 60px;
+  font-size: 1.4em;
+}
+/* #content {
+  text-align: center;
+} */
+#nav_ul li {
+  float: left;
+  width: 100px;
+  height: 60px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  background: #4662d9;
+  color: white;
+  margin: 0px 2px;
+  border: 2px solid black;
+  
+}
+#content {
+  position: relative;
+}
+#pic_list {
+  height:400px;
+  width: 890px;
+  border: 2px solid black;
+  float:left;
+  margin: 5px;
+}
+#pic_slider {
+  height: 400px;
+  width: 600px;
+  margin: 5px;
+  background: rgb(192, 192, 192);
+  position: relative;
+  overflow: hidden;
+  float:right;
+}
+#pic_slider_ul {
+  width: 2400px;
+  height: 400px;
+  background: green; 
+  position: absolute;
+}
+#pic_slider_ul li{
+  float: left;
+  /* background: rgb(134, 134, 88); */
+}
+.pic {
+  background: url(./1.jpg) no-repeat center;
+  background-size: cover;
+  width:600px;
+  height:400px;
+  /* background: rgba(0, 0, 255, 0.555); */
+}
+#pic_tip {
+  width: 240px;
+  height: 40px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+#ul_tip li {
+  background: gray;
+  width: 52px;
+  margin: 5px 2px;
+  height: 30;
+  float: left;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+  
+}
+#ul_tip a {
+  color: white;
+}
+
+#ul_tip li:hover {
+  background: rgb(152, 214, 204);
+}
+

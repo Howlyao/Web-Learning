@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <ul>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+    <script>
+      window.onload = function () {
+        let worker = new SharedWorker('worker.js');
+        worker.port.start();
+
+        let ul = document.querySelector('ul');
+        ul.addEventListener ('click', ev => {
+          if (ev.target.nodeName.toLowerCase() === 'li') {
+
+            let text = ev.target.textContent;
+            worker.port.postMessage(text)
+          }
+
+        })
+
+
+        worker.port.addEventListener('message', (e) => {
+          console.log('page1: ' + e.data)
+        })
+      }
+
+    </script>
+  </body>
+
+</html>

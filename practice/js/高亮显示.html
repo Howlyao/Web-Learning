@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        var trs = document.getElementById("table").rows;
+        var len =trs.length;
+        for (var i = 0; i < len; i ++) {
+          var trsi = trs[i];
+
+            trsi.onmousemove = function(event){//设置高亮效果的样式
+                this.style.backgroundColor = "#a5e5aa";//高亮样式 background-color:#a5e5aa;
+            }
+
+            trsi.onmouseout = function(){//还原初始的样式
+                this.style.backgroundColor = "#fff";
+            }
+        }
+        // 新增一行
+        var rowContent = ["hello", "fuck", "ass", "cute", "recommend"];
+
+        var table = document.getElementById("table");
+        var addOneRow = function (el, content) {
+          // 方法1
+          // var tr = document.createElement("tr");
+          // for (var i = 0; i < 5;i ++) {
+          //     var td = document.createElement("td");
+          //     var td_context = document.createTextNode(content[i]);
+          //     td.appendChild(td_context);
+          //     tr.appendChild(td);
+
+          // }
+          // el.prepend(tr);
+
+          //方法2
+          var index = 0;
+          var tr = el.insertRow(index);
+          for (var i = 0; i < content.length; i ++) {
+            tr.insertCell(i).innerHTML = content[i];
+          }
+
+        }
+
+        var deleteOneRow = function(el) {
+          
+          var index = 0;
+         
+          if (el.rows.length > 0) {
+             //方法1
+            // var row = el.rows[index];
+            // el.deleteRow(row);
+            //方法2
+            var $tbody = $("#tbody");
+            // var tbody = document.getElementById("tbody");
+            // var row = tbody.childNodes[0];
+            // tbody.removeChild(row);
+            var $row = $tbody.children().first();
+            $row.remove();
+            
+          } else {
+
+          }
+          
+         
+
+        }
+
+        $("#btn1").click(function () {
+          addOneRow(table, rowContent);
+        });
+        $("#btn2").click(function () {
+          deleteOneRow(table);
+        });
+
+
+      })
+    </script>
+    <style>
+      #table {
+        border: 1px solid black;
+      }
+      td {
+        border: 1px solid black;
+        padding: 5px 10px 5px;
+      }
+      .bg {
+        background-image: url(./delete.png);
+        width: 100px;
+        height: 100px;
+        background-repeat: no-repeat;
+        margin: 5px 10px 15px 20px;
+      }
+      .container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+        padding: 5px 10px 15px 20px;
+      }
+      .box {
+        position: absolute;
+        top: 0;
+        width: 200px;
+        height: 200px;
+        box-sizing: border-box;
+        background-color: blue;
+
+        border: 3em double orange;
+        border-image: url(./delete.png) 27 round;
+        /* border-image-width: 1.5rem; */
+        /* border-image-outset: 1.5rem; */
+      }
+    </style>
+  </head>
+  <body>
+    <table id="table">
+      <tbody id="tbody">
+        <tr>
+          <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+        <tr>
+          <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+        <tr>
+          <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+        <tr>
+          <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="btn1">新增一行</button>
+    <button id="btn2">删除一行</button>
+    <div class="container">
+      <div class="bg"></div>
+      <div class="box"></div>
+    </div>
+  </body>
+</html>

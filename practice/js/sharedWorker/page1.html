@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+
+    <script>
+      window.onload = function() {
+        let worker = new SharedWorker("worker.js");
+        worker.port.start();
+
+        let ul = document.querySelector("ul");
+        ul.addEventListener("click", ev => {
+          // console.log(ev.target.nodeName)
+          if (ev.target.nodeName.toLowerCase() === "li") {
+            let text = ev.target.textContent;
+            console.log(text);
+            worker.port.postMessage(text);
+          }
+        });
+
+        // worker.port.addEventListener('message', (e) => {
+        //   console.log('page1: ' + e.data)
+        // })
+
+        worker.port.onmessage = function(e) {
+          console.log("page1:" + e.data);
+        };
+      };
+    </script>
+  </body>
+</html>

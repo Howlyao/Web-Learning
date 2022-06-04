@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    
+    <style>
+    </style>
+  <body>
+    <button onclick="windowFull()">click</button>
+  </body>
+  <script>
+    function windowFull () {
+      let w = screen.availWidth;
+      let h = screen.availHeight;
+      let xx = -4;
+      let yy = -4;
+      console.log(w, h)
+      window.resizeTo(w, h);
+      window.moveTo(xx,yy); 
+    }
+  </script>
+</html>

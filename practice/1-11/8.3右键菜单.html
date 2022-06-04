@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        //取消浏览器的右键功能
+        $(document).bind("contextmenu",function(e){
+          return false;
+        });
+        $(window).mousedown( function (e) {
+          var $menu = $("#menu");
+          var menuHeight = $menu.height() , menuWidth = $menu.width();
+          var windowHeight = $(window).height(); //doucment.body.clientHeight
+          var windowWidth = $(window).width(); //doucment.body.clientWidth
+          if (e.which == 3) {
+            var offsetLeft = e.clientX;    
+            var offsetTop = e.clientY;
+            var offsetLeftA = e.pageX;  
+            var offsetTopA = e.pageY;     // clientX + scrollTop()
+            // var documentHeight = $(document).height(); //document.body.scrollHeight
+            // console.log(offsetTop);
+            //菜单触底
+            if ((offsetTop + menuHeight) > windowHeight) {
+              offsetTopA -= menuHeight;
+            }
+            if ((offsetLeft + menuWidth) > windowWidth) {
+              offsetLeftA -= menuWidth;
+            }
+            
+            // console.log(offsetLeft + " " + offsetTop);
+            $menu.css({left: offsetLeftA + 2 + "px", top: offsetTopA + 2 + "px"});
+            $menu.show();
+            
+          } else {
+            $menu.hide();
+          }
+          
+          
+          var flag = false;
+          var $ul =  $(".sub");
+          $("#menu > ul > li").mouseover(function () {
+            var offsetX = $(this).offset().left;
+            var offsetY = $(this).offset().top;
+           
+            var $ul = $(this).children(":eq(1)");
+            //set sub-menu position
+            if ((offsetY + $ul.height()) > windowHeight) {
+              $ul.css({top: -$ul.height() + 41 + "px"});
+            } else {
+              $ul.css({top: 0 + "px"});
+            }
+            if ((offsetX + $ul.width() + $menu.width()) > windowWidth) {
+              $ul.css("left", -112 + "px")
+            } else {
+              $ul.css("left", 112 + "px")
+            }
+            // console.log(offsetX + " " + $ul.width() + " " + windowWidth);
+
+            $ul.addClass("current");
+            $(this).siblings().children("ul").removeClass("current");
+            // console.log( $(this).siblings().children("ul"));
+            // $(this)
+          });
+          
+          // $("#menu > ul > li > a").mouseout(function () {
+          //   $(this).next().removeClass("current");
+          // })
+     
+        });
+       
+
+        // console.log($("#sub").offset().left);
+      })
+    </script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #menu {
+        display: none;
+        
+        position: absolute;
+        box-shadow: 0 0 4px #000;
+      }
+      ul > li{
+        list-style: none;
+        position: relative;
+      }
+      ul > li > a {
+        text-align: left;
+        padding-left: 10px;
+        text-decoration: none;
+        width: 100px;
+        line-height: 40px;
+        display: block;
+        color: black;
+        background: #888;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        
+      }
+      ul > li > a:hover {
+        background: #999;
+        box-shadow: inset 0px 0px 5px rgba(255, 255, 255, .6);
+      }
+      #test {
+        height: 1000px;
+        background: #ddd;
+      }
+    
+      .sub {
+        display: none;
+        position: absolute;
+        box-shadow: 1px 0 1px #000;
+      
+      }
+      .current {
+        display: block;
+      }
+    
+    </style>
+  </head>
+  <body>
+    <div id="menu">
+      <ul>
+        <li><a href="#">项目1</a></li>
+        <li><a href="#">项目2</a></li>
+        <li>
+          <a href="#">项目3</a>
+          <ul class="sub">
+              <li><a href="#">项目4-1</a></li>
+              <li><a href="#">项目4-2</a></li>
+              <li><a href="#">项目4-3</a></li>
+              <li><a href="#">项目4-4</a></li>
+          </ul>
+        </li>
+        <li>
+          <a id="a-item-4" href="#">项目4</a>
+          <ul class="sub">
+              <li><a href="#">项目4-1</a></li>
+              <li><a href="#">项目4-2</a></li>
+              <li><a href="#">项目4-3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </body>
+</html>

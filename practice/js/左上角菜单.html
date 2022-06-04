@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script>
+    <script src="../velocity.min.js" type="text/javascript"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #menu {
+        position: absolute;
+        border: 1px solid black;
+        width: 400px;
+        overflow: hidden;
+        transform: all 0.8s ease;
+        left: -281px;
+        
+      }
+      #left {
+        float:left;
+        width: 280px;
+        background: gray;
+        border-right: 1px solid black;
+      }
+      #right {
+        float:left;
+        width: 119px;
+        background: plum;
+        text-align: center;
+        padding-bottom: 9999px; 
+        margin-bottom: -9999px;
+        
+      }
+      a {
+        text-decoration: none;
+      }
+      ul {
+        margin-left: 5px;
+        margin-Top: 10px;
+        margin-bottom: 10px;
+      }
+      ul > li {
+        list-style: none;
+        margin-top: 5px;
+      }
+      ul > li > a {
+        color: white;
+      }
+      p {
+        width: 100px;
+        height: 200px;
+        background: red;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="menu">
+        <div id="left">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Link Two</a></li>
+            <li><a href="#">Project VII Home</a></li>
+            <li><a href="#">Project VII Design Packs</a></li>
+            <li><a href="#">Link Number Five</a></li>
+            <li><a href="#">Link Number Six</a></li>
+          </ul>
+        </div>
+        <div id="right"><a href="#">open</a></div>
+      </div>
+      <p id="p1">123</p>
+      <p id="p4">123</p>
+      <span id="p2">1243</span>
+    </div>
+    <script>
+      $(function () {
+        var _menu = $("#menu");
+        var _a = $("#right a").first();
+        var isClose = true;
+        $("#right a").first().click(function () {
+          if (isClose) {
+            _a.html('close');
+            // _menu.animate({left: 0 + "px"}, 800);
+            _menu.velocity({left: ["0px", [250, 15 ]]}, 800);
+            // _menu.css({transform:'translate(281px, 0)'});
+          } else {
+            _a.html('open');
+            _menu.animate({left: "-281px"}, 800);
+          }
+          isClose = !isClose;
+          
+        });
+      })
+    </script>
+  </body>
+</html>
